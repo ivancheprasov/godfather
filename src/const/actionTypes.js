@@ -1,0 +1,3 @@
+export const IS_AUTHORIZED = "IS_AUTHORIZED";
+export const IS_FETCHING = "IS_FETCHING";
+export const SET_USER_MESSAGE = "SET_USER_MESSAGE";

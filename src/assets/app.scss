@@ -1,0 +1,15 @@
+@import "const";
+
+body {
+  background-color: $lightGrey;
+  font-family: "Helvetica", sans-serif;
+}
+
+.progress-bar {
+  &.MuiLinearProgress-colorPrimary{
+    background-color: $turquoise;
+    .MuiLinearProgress-barColorPrimary{
+      background-color: $hoverTurquoise;
+    }
+  }
+}
