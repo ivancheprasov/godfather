@@ -6,6 +6,7 @@ body {
 }
 
 .progress-bar {
+  margin: 0 12px;
   &.MuiLinearProgress-colorPrimary{
     background-color: $turquoise;
     .MuiLinearProgress-barColorPrimary{

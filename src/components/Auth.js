@@ -1,7 +1,7 @@
-import { Field, reduxForm } from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import "../assets/auth.scss";
 import {PageWrapper} from "./PageWrapper.js";
-import {login} from "../actions/auth";
+import {login} from "../actions/user";
 import {connect} from "react-redux";
 
 let App = props => {
@@ -18,7 +18,8 @@ let App = props => {
             <div className={`user-message-wrapper ${className}`}>
                 <span className={"user-message"}>{userMessage || <br/>}</span>
             </div>
-            <form name={"authorization-form"} className={"authorization-form"} onSubmit={props.handleSubmit(submit)}>
+            <form name={"authorization-form"} className={"authorization-form"}
+                  onSubmit={props.handleSubmit(submit)}>
                 <Field
                     type={"text"}
                     name={"username"}
@@ -48,7 +49,7 @@ let App = props => {
 
 const renderInput = ({input, type, placeholder, className, meta: {touched, error}}) => {
     const inputClassName = `${className}${touched && error ? " input-error" : ""}`;
-    return(
+    return (
         <input
             {...input}
             type={type}
@@ -61,10 +62,10 @@ const renderInput = ({input, type, placeholder, className, meta: {touched, error
 const authFormValidator = values => {
     const errors = {};
     const {username, password} = values;
-    if(!username || username === ""){
+    if (!username || username === "") {
         errors.username = "Required"
     }
-    if(!password || password === ""){
+    if (!password || password === "") {
         errors.password = "Required"
     }
     return errors;
@@ -76,8 +77,13 @@ App = reduxForm({
 })(App);
 
 App = connect(
-    state => ({userMessage: state.user.userMessage}),
-    {login}
+    state => ({
+        userMessage: state.user.userMessage,
+        isMobile: state.app.isMobile
+    }),
+    {
+        login
+    }
 )(App);
 
 export default App;

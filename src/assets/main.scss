@@ -1,0 +1,21 @@
+@import "mixin";
+
+.header-menu{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 8px 12px;
+}
+
+.sign-out-button{
+  @include button;
+  padding: 15px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.username{
+  font-size: 20px;
+  margin-right: 5px;
+}
+
