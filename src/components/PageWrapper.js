@@ -6,9 +6,7 @@ export const PageWrapper = props => {
     const isFetching = useSelector(state => state.user.isFetching);
     return (
         <>
-            {
-                isFetching && <LinearProgress className={"progress-bar"}/>
-            }
+            <LinearProgress className={"progress-bar"} style={{visibility: !isFetching && "hidden"}}/>
             {props.children}
         </>
     );

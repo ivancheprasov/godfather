@@ -3,7 +3,7 @@ import * as types from "../const/actionTypes";
 const initialState = {
     isAuthorized: false,
     isFetching: false,
-    login: null,
+    username: null,
     userMessage: ""
 };
 
@@ -15,6 +15,8 @@ export const user = (state = initialState, action) => {
             return {...state, isFetching: action.payload};
         case types.SET_USER_MESSAGE:
             return {...state, userMessage: action.payload};
+        case types.SET_USERNAME:
+            return {...state, username: action.payload};
         default:
             return {...state};
     }

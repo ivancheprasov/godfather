@@ -1,14 +1,13 @@
 import { Field, reduxForm } from 'redux-form';
 import "../assets/auth.scss";
 import {PageWrapper} from "./PageWrapper.js";
-import * as AuthActions from "../actions/auth";
+import {login} from "../actions/auth";
 import {connect} from "react-redux";
-import {requestWrapper} from "../utils";
 
 let App = props => {
     const {isMobile, userMessage} = props;
     const submit = values => {
-        requestWrapper(() => props.login(values.username, values.password));
+        props.login(values.username, values.password);
     };
     const className = isMobile ? "mobile" : "";
     return (
@@ -73,12 +72,12 @@ const authFormValidator = values => {
 
 App = reduxForm({
     form: "authorization-form",
-    validate: authFormValidator,
-    onSubmit: null
+    validate: authFormValidator
 })(App);
 
-App = connect(state => ({
-  userMessage: state.user.userMessage
-}) ,{...AuthActions})(App);
+App = connect(
+    state => ({userMessage: state.user.userMessage}),
+    {login}
+)(App);
 
 export default App;
