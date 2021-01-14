@@ -1,29 +1,18 @@
-import {PageWrapper} from "./PageWrapper";
-import "../assets/main.scss";
-import {connect} from "react-redux";
-import {logout} from "../actions/user";
+import PageWrapper from "./PageWrapper";
+import ContentContainer from "./ContentContainer";
+import OrderList from "./OrderList";
+import HeaderMenu from "./HeaderMenu";
 
-let Main = props => {
+const Main = () => {
     return (
         <PageWrapper>
-            <div className={"header-menu"}>
-                <span className={"username"}>{props.username}</span>
-                <button
-                    className={"sign-out-button"}
-                    onClick={() => props.logout()}
-                >
-                    Sign out
-                </button>
-            </div>
+            <HeaderMenu/>
+            <ContentContainer
+                header={<span>Select an option</span>}
+                body={<OrderList/>}
+            />
         </PageWrapper>
     );
 };
-
-Main = connect(
-    state => ({
-        username: state.user.username
-    }),
-    {logout}
-)(Main);
 
 export default Main;

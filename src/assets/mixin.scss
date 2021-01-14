@@ -13,3 +13,8 @@
     outline: none;
   }
 }
+
+@mixin link{
+  color: black;
+  text-decoration: none;
+}

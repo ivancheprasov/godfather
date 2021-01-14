@@ -5,6 +5,7 @@ import Main from "./Main";
 import {Component} from "react";
 import {initApp, setDeviceType} from "../actions/app";
 import {login, setUserMessage} from "../actions/user";
+import Recruitment from "./Recruitment";
 
 class App extends Component {
     componentDidMount() {
@@ -32,6 +33,9 @@ class App extends Component {
                 </Route>
                 <Route path={"/main"}>
                     <Main/>
+                </Route>
+                <Route path={"/recruit"}>
+                    <Recruitment/>
                 </Route>
                 {
                     isLoading ?

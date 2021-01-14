@@ -1,4 +1,4 @@
-@import "const";
+@import "mixin";
 
 body {
   background-color: $lightGrey;
@@ -11,6 +11,64 @@ body {
     background-color: $turquoise;
     .MuiLinearProgress-barColorPrimary{
       background-color: $hoverTurquoise;
+    }
+  }
+}
+
+.header-menu{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 8px 12px;
+}
+
+.sign-out-button{
+  @include button;
+  padding: 15px;
+  font-size: 20px;
+  margin-left: 5px;
+}
+
+.username{
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.content-container {
+  background-color: white;
+  border: 2px solid $grey;
+  border-radius: 8px;
+  padding: 20px;
+  &.desktop{
+    margin: 20px auto;
+    width: 30%;
+    height: 700px;
+  }
+  &.mobile {
+    margin: 20px 12px 12px;
+    height: calc(75vh - 10px);
+    width: auto;
+  }
+  &-header{
+    border-bottom: 2px solid $grey;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    min-height: 50px;
+    padding-bottom: 20px;
+    height: 10%;
+    span {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &-body{
+    padding-top: 20px;
+    overflow-y: scroll;
+    height: calc(90% - 40px);
+    &::-webkit-scrollbar{
+      -webkit-appearance: none;
     }
   }
 }

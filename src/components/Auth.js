@@ -1,6 +1,6 @@
 import {Field, reduxForm} from 'redux-form';
 import "../assets/auth.scss";
-import {PageWrapper} from "./PageWrapper.js";
+import PageWrapper from "./PageWrapper.js";
 import {login} from "../actions/user";
 import {connect} from "react-redux";
 
