@@ -1,0 +1,52 @@
+@import "mixin";
+
+.list{
+  height: 100%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar{
+    -webkit-appearance: none;
+  }
+}
+
+.list-item {
+  &:hover{
+    background-color: $lightGrey;
+  }
+  width: calc(100% - 67px);
+  display: inline-block;
+  padding: 20px;
+  border-bottom: 2px solid $lightGrey;
+  cursor: pointer;
+}
+
+.list-footer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  .MuiFormGroup-root{
+    flex-wrap: nowrap;
+  }
+  .MuiIconButton-colorSecondary {
+    color: $turquoise !important;
+  }
+}
+
+.list-submit-button{
+  @include button;
+  font-size: 20px;
+  padding: 0 30px;
+  height: 70px;
+}
+.list-info{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.list-info-property{
+  display: flex;
+  width: 100px;
+  font-weight: bold;
+  margin: 0 30px;
+}

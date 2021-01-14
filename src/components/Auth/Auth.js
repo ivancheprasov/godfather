@@ -1,13 +1,15 @@
 import {Field, reduxForm} from 'redux-form';
-import "../assets/auth.scss";
-import PageWrapper from "./PageWrapper.js";
-import {login} from "../actions/user";
+import "../../assets/auth.scss";
+import PageWrapper from "../common/PageWrapper.js";
+import {login} from "../../actions/user";
 import {connect} from "react-redux";
+import {useHistory} from "react-router-dom";
 
 let App = props => {
     const {isMobile, userMessage} = props;
+    const history = useHistory();
     const submit = values => {
-        props.login(values.username, values.password);
+        props.login(values.username, values.password).then(() => history.replace("/main"));
     };
     const className = isMobile ? "mobile" : "";
     return (

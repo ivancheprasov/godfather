@@ -1,6 +1,5 @@
 import * as types from "../const/actionTypes";
 import axios from "axios";
-import {store} from "../index";
 import {requestWrapper} from "./app";
 
 export const login = (username, password) => {
@@ -18,7 +17,7 @@ export const login = (username, password) => {
                                 type: types.IS_AUTHORIZED,
                                 payload: true
                             });
-                            setUserMessage("");
+                            dispatch(setUserMessage(""));
                             const savedUsername = localStorage.getItem("username");
                             const savedPassword = localStorage.getItem("password");
                             if (!savedUsername) {
@@ -33,11 +32,12 @@ export const login = (username, password) => {
                         error => {
                             switch (error.response.status) {
                                 case 403:
-                                    setUserMessage("Provided credentials are incorrect");
+                                    dispatch(setUserMessage("Provided credentials are incorrect"));
                                     break;
                                 default:
-                                    setUserMessage("Login failed");
+                                    dispatch(setUserMessage("Login failed"));
                             }
+                            return Promise.reject(error);
                         }
                     )
         );
@@ -45,10 +45,11 @@ export const login = (username, password) => {
 };
 
 export const setUserMessage = message => {
-    return store.dispatch({
-        type: types.SET_USER_MESSAGE,
-        payload: message
-    });
+    return dispatch =>
+        dispatch({
+            type: types.SET_USER_MESSAGE,
+            payload: message
+        });
 };
 
 export const logout = () => {

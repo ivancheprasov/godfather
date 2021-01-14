@@ -1,5 +1,5 @@
 import {LinearProgress} from '@material-ui/core';
-import "../assets/app.scss";
+import "../../assets/app.scss";
 import {useSelector} from "react-redux";
 
 const PageWrapper = props => {

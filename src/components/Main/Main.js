@@ -1,7 +1,7 @@
-import PageWrapper from "./PageWrapper";
-import ContentContainer from "./ContentContainer";
+import PageWrapper from "../common/PageWrapper";
+import ContentContainer from "../common/ContentContainer";
 import OrderList from "./OrderList";
-import HeaderMenu from "./HeaderMenu";
+import HeaderMenu from "../common/HeaderMenu";
 
 const Main = () => {
     return (

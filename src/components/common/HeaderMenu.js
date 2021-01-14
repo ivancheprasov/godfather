@@ -1,6 +1,6 @@
 import {connect} from "react-redux";
-import {logout} from "../actions/user";
-import "../assets/app.scss";
+import {logout} from "../../actions/user";
+import "../../assets/app.scss";
 
 const HeaderMenu = props => {
     return(

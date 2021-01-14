@@ -5,3 +5,7 @@ export const SET_USERNAME = "SET_USERNAME";
 export const INIT_APP = "INIT_APP";
 export const IS_MOBILE = "IS_MOBILE";
 export const SET_ORDERS = "SET_ORDERS";
+export const SET_SOLDIERS = "SET_SOLDIERS";
+export const SET_SELECTED_FAMILY = "SET_SELECTED_FAMILY";
+export const SET_SELECTED_SOLDIER = "SET_SELECTED_SOLDIER";
+export const SET_SELECTED_ORDER = "SET_SELECTED_ORDER";

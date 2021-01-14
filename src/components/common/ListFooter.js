@@ -1,0 +1,39 @@
+import PropTypes from 'prop-types';
+import {FormControlLabel, Radio, RadioGroup} from "@material-ui/core";
+import * as families from "../../const/families";
+import {connect} from "react-redux";
+import {handleFamilyChange} from "../../actions/orderForm";
+
+const ListFooter = props => {
+    const {selectedFamily, handleFamilyChange, onSubmit, disabled} = props;
+    return(
+      <div className={"list-footer"}>
+          <RadioGroup
+              name="family"
+              value={selectedFamily}
+              defaultValue={families.Corleone}
+              onChange={event => handleFamilyChange(event.target.value)}
+          >
+              <FormControlLabel value={families.Corleone} control={<Radio/>} label={"Corleone"}/>
+              <FormControlLabel value={families.Tattalgia} control={<Radio/>} label={"Tattaglia"}/>
+          </RadioGroup>
+          <button
+              className={"list-submit-button"}
+              onClick={onSubmit}
+              disabled={disabled}
+          >
+              Send
+          </button>
+      </div>
+    );
+};
+
+ListFooter.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+    disabled: PropTypes.bool
+};
+
+export default connect(
+    state => ({selectedFamily: state.orderForm.selectedFamily}),
+    {handleFamilyChange}
+)(ListFooter);

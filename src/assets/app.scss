@@ -46,7 +46,7 @@ body {
   }
   &.mobile {
     margin: 20px 12px 12px;
-    height: calc(75vh - 10px);
+    height: calc(80vh - 10px);
     width: auto;
   }
   &-header{
@@ -54,9 +54,8 @@ body {
     display: flex;
     justify-content: center;
     text-align: center;
-    min-height: 50px;
     padding-bottom: 20px;
-    height: 10%;
+    height: calc(10% - 24px);
     span {
       display: flex;
       justify-content: center;
@@ -64,11 +63,24 @@ body {
     }
   }
   &-body{
-    padding-top: 20px;
     overflow-y: scroll;
-    height: calc(90% - 40px);
     &::-webkit-scrollbar{
       -webkit-appearance: none;
     }
   }
+  &-footer {
+    height: calc(20% - 24px);
+    padding-top: 20px;
+    border-top: 2px solid $grey;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.subheader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }

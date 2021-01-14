@@ -1,11 +1,12 @@
 import {connect} from "react-redux";
 import {BrowserRouter, Redirect, Route} from "react-router-dom";
-import Auth from "./Auth";
-import Main from "./Main";
+import Auth from "./Auth/Auth";
+import Main from "./Main/Main";
 import {Component} from "react";
 import {initApp, setDeviceType} from "../actions/app";
 import {login, setUserMessage} from "../actions/user";
-import Recruitment from "./Recruitment";
+import RecruitmentForm from "./Recruitment/RecruitmentForm";
+import SimpleOrderForm from "./SimpleOrder/SimpleOrderForm";
 
 class App extends Component {
     componentDidMount() {
@@ -13,7 +14,8 @@ class App extends Component {
         const username = localStorage.getItem("username");
         const password = localStorage.getItem("password");
         if (username && password) {
-            this.props.login(username, password).finally(
+            this.props.login(username, password)
+                .finally(
                 () => {
                     this.props.setUserMessage("");
                     this.props.initApp();
@@ -35,16 +37,16 @@ class App extends Component {
                     <Main/>
                 </Route>
                 <Route path={"/recruit"}>
-                    <Recruitment/>
+                    <RecruitmentForm/>
+                </Route>
+                <Route path={"/orders/:id"}>
+                    <SimpleOrderForm/>
                 </Route>
                 {
-                    isLoading ?
-                        null
+                    !isLoading && isAuthorized ?
+                        <Redirect exact from={"/"} to={"/main"}/>
                         :
-                        isAuthorized ?
-                            <Redirect to={"/main"}/>
-                            :
-                            <Redirect to={"/auth"}/>
+                        <Redirect to={"/auth"}/>
                 }
             </BrowserRouter>
         );
