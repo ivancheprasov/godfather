@@ -10,7 +10,7 @@ export const loadSoldiers = () => {
                     .then(response =>
                         dispatch({
                             type: types.SET_SOLDIERS,
-                            payload: response.data.soldiers
+                            payload: response.data
                         })
                     )
         );
@@ -25,7 +25,7 @@ export const loadOrders = () => {
                     .then(response =>
                         dispatch({
                             type: types.SET_ORDERS,
-                            payload: response.data.soldiers
+                            payload: response.data
                         })
                     )
         );

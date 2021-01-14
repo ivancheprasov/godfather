@@ -21,10 +21,10 @@ export const login = (username, password) => {
                             const savedUsername = localStorage.getItem("username");
                             const savedPassword = localStorage.getItem("password");
                             if (!savedUsername) {
-                                localStorage.setItem("username", savedUsername);
+                                localStorage.setItem("username", username);
                             }
                             if (!savedPassword) {
-                                localStorage.setItem("password", savedPassword);
+                                localStorage.setItem("password", password);
                             }
                         }
                     )

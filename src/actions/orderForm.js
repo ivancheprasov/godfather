@@ -21,7 +21,7 @@ export const recruit = (family, soldierId) => {
 export const giveOrder = (family, orderId) => {
     return dispatch => {
         return requestWrapper(
-            () => axios.post("/order", {family, orderId})
+            () => axios.post("/orders", {family, orderId})
                 .then(() => dispatch(setSelectedOrder(null)))
         );
     };
