@@ -1,15 +1,17 @@
 import {Field, reduxForm} from 'redux-form';
 import "../../assets/auth.scss";
 import PageWrapper from "../common/PageWrapper.js";
-import {login} from "../../actions/user";
+import {login, setUserMessage} from "../../actions/user";
 import {connect} from "react-redux";
 import {useHistory} from "react-router-dom";
+import {useEffect} from "react";
 
 let App = props => {
-    const {isMobile, userMessage} = props;
+    const {isMobile, userMessage, setUserMessage, login} = props;
     const history = useHistory();
+    useEffect(() => setUserMessage(""), [setUserMessage]);
     const submit = values => {
-        props.login(values.username, values.password).then(() => history.replace("/main"));
+        login(values.username, values.password).then(() => history.replace("/main"));
     };
     const className = isMobile ? "mobile" : "";
     return (
@@ -84,7 +86,8 @@ App = connect(
         isMobile: state.app.isMobile
     }),
     {
-        login
+        login,
+        setUserMessage
     }
 )(App);
 

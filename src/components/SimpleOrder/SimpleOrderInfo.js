@@ -8,13 +8,14 @@ const SimpleOrderInfo = () => {
     const history = useHistory();
     useEffect(() => !selectedOrder && history.replace("/main"), [selectedOrder, history]);
     const order = selectedOrder || {};
-    const {cost, income, soldiers_number, lawyers_number, description} = order;
+    const {cost, income, soldiers_number, lawyers_number, description, family} = order;
     return (
         <>
             <InfoProperty label={"Cost:"} value={cost}/>
             <InfoProperty label={"Income:"} value={income}/>
             <InfoProperty label={"Soldiers Required:"} value={soldiers_number}/>
             <InfoProperty label={"Lawyers Required:"} value={lawyers_number}/>
+            <InfoProperty label={"Family:"} value={family}/>
             {
                 description &&
                 <InfoProperty

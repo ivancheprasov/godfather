@@ -11,10 +11,7 @@ const SoldierInfo = () => {
                 age &&
                 <InfoProperty label={"Age:"} value={age}/>
             }
-            {
-                family &&
-                <InfoProperty label={"Family:"} value={family}/>
-            }
+            <InfoProperty label={"Family:"} value={family || "Unemployed"}/>
             {
                 is_busy != null &&
                 <InfoProperty

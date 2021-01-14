@@ -1,6 +1,7 @@
 import * as types from "../const/actionTypes";
 import {requestWrapper} from "./app";
 import axios from "axios";
+import {setUserMessage} from "./user";
 
 export const handleFamilyChange = value => {
     return dispatch => dispatch({
@@ -14,6 +15,10 @@ export const recruit = (family, soldierId) => {
         return requestWrapper(
             () => axios.post("/recruit", {family, soldierId})
                 .then(() => dispatch(setSelectedSoldier(null)))
+                .catch(error => {
+                    dispatch(setUserMessage("Recruitment failed"));
+                    return Promise.reject(error);
+                })
         );
     };
 };
@@ -23,6 +28,10 @@ export const giveOrder = (family, orderId) => {
         return requestWrapper(
             () => axios.post("/orders", {family, orderId})
                 .then(() => dispatch(setSelectedOrder(null)))
+                .catch(error => {
+                    dispatch(setUserMessage("Order failed"));
+                    return Promise.reject(error);
+                })
         );
     };
 };
