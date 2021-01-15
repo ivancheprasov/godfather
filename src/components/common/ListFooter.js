@@ -3,9 +3,12 @@ import {FormControlLabel, Radio, RadioGroup} from "@material-ui/core";
 import * as families from "../../const/families";
 import {connect} from "react-redux";
 import {handleFamilyChange} from "../../actions/orderForm";
+import {loadFamilyBudget} from "../../actions/data";
+import {useEffect} from "react";
 
 const ListFooter = props => {
-    const {selectedFamily, handleFamilyChange, onSubmit, disabled} = props;
+    const {selectedFamily, handleFamilyChange, loadFamilyBudget, onSubmit, disabled} = props;
+    useEffect(() => loadFamilyBudget(selectedFamily || families.Corleone), [loadFamilyBudget, selectedFamily]);
     return(
       <div className={"list-footer"}>
           <RadioGroup
@@ -35,5 +38,5 @@ ListFooter.propTypes = {
 
 export default connect(
     state => ({selectedFamily: state.orderForm.selectedFamily}),
-    {handleFamilyChange}
+    {handleFamilyChange, loadFamilyBudget}
 )(ListFooter);

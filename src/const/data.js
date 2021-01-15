@@ -1,0 +1,1 @@
+export const RECRUITMENT_COST = 3;

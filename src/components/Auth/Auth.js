@@ -7,10 +7,13 @@ import {useHistory} from "react-router-dom";
 import {useEffect} from "react";
 import SimpleInput from "../common/SimpleInput";
 
-let App = props => {
-    const {isMobile, userMessage, setUserMessage, login} = props;
+let Auth = props => {
+    const {isMobile, userMessage, isAuthorized, setUserMessage, login} = props;
     const history = useHistory();
-    useEffect(() => setUserMessage(""), [setUserMessage]);
+    useEffect(() => {
+        setUserMessage("");
+        isAuthorized && history.replace("/main");
+    }, [setUserMessage, isAuthorized, history]);
     const submit = values => {
         login(values.username, values.password).then(() => history.replace("/main"));
     };
@@ -64,20 +67,21 @@ const authFormValidator = values => {
     return errors;
 };
 
-App = reduxForm({
+Auth = reduxForm({
     form: "authorization-form",
     validate: authFormValidator
-})(App);
+})(Auth);
 
-App = connect(
+Auth = connect(
     state => ({
         userMessage: state.user.userMessage,
-        isMobile: state.app.isMobile
+        isMobile: state.app.isMobile,
+        isAuthorized: state.user.isAuthorized
     }),
     {
         login,
         setUserMessage
     }
-)(App);
+)(Auth);
 
-export default App;
+export default Auth;

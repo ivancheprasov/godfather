@@ -17,6 +17,11 @@
   padding: 20px;
   border-bottom: 2px solid $lightGrey;
   cursor: pointer;
+  div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .list-footer{
@@ -38,6 +43,7 @@
   padding: 0 30px;
   height: 70px;
 }
+
 .list-info{
   display: flex;
   flex-direction: row;
@@ -49,4 +55,8 @@
   width: 100px;
   font-weight: bold;
   margin: 0 30px;
+}
+
+.list-item-error-icon{
+  color: red;
 }

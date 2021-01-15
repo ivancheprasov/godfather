@@ -1,15 +1,25 @@
 import PropTypes from 'prop-types';
+import ErrorIcon from "@material-ui/icons/Error";
 import "../../assets/list.scss";
+import {useSelector} from "react-redux";
+import * as data from "../../const/data";
 
 const ListItem = props => {
-    const {label, onClick} = props;
+    const budget = useSelector(state => state.data.budget);
+    const {label, family, onClick} = props;
     return (
         <li>
             <div
                 className={"list-item"}
                 onClick={onClick}
             >
-                {label}
+                <div>
+                    <span>{label}</span>
+                    {
+                        (family || (budget && budget < data.RECRUITMENT_COST)) &&
+                        <ErrorIcon className={"list-item-error-icon"}/>
+                    }
+                </div>
             </div>
         </li>
     );
@@ -17,7 +27,8 @@ const ListItem = props => {
 
 ListItem.propTypes = {
     label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    family: PropTypes.string
 };
 
 export default ListItem;

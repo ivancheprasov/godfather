@@ -28,32 +28,32 @@ class App extends Component {
     }
 
     render() {
-        const {isLoading, isAuthorized, isAdmin} = this.props;
+        const {isLoading, isAuthorized} = this.props;
         return (
             <BrowserRouter>
-                <Route path={"/auth"}>
+                <Route exact path={["/auth","/"]}>
                     <Auth/>
                 </Route>
-                <Route path={"/main"}>
-                    <Main/>
-                </Route>
-                <Route path={"/recruit"}>
-                    <RecruitmentForm/>
-                </Route>
-                <Route path={"/orders/:id"}>
-                    <SimpleOrderForm/>
-                </Route>
-                <Route path={"/add"}>
-                    <AddOrder/>
-                </Route>
                 {
-                    !isLoading && isAuthorized ?
-                        <Redirect exact from={"/"} to={"/main"}/>
+                    !isLoading && (
+                        !isAuthorized
+                        ? <Redirect to={"/auth"}/>
                         :
-                        <Redirect to={"/auth"}/>
-                }
-                {
-                    !isLoading  && isAuthorized && !isAdmin && <Redirect from={"/add"} to={"/main"}/>
+                            <>
+                                <Route path={"/main"}>
+                                    <Main/>
+                                </Route>
+                                <Route path={"/recruit"}>
+                                    <RecruitmentForm/>
+                                </Route>
+                                <Route path={"/orders/:id"}>
+                                    <SimpleOrderForm/>
+                                </Route>
+                                <Route path={"/add"}>
+                                    <AddOrder/>
+                                </Route>
+                            </>
+                    )
                 }
             </BrowserRouter>
         );

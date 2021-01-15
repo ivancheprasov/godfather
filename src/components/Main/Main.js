@@ -2,29 +2,43 @@ import PageWrapper from "../common/PageWrapper";
 import ContentContainer from "../common/ContentContainer";
 import OrderList from "./OrderList";
 import HeaderMenu from "../common/HeaderMenu";
-import {useSelector} from "react-redux";
+import {connect} from "react-redux";
 import MainFooter from "./MainFooter";
+import {useEffect} from "react";
+import {setUserMessage} from "../../actions/user";
 
-const Main = () => {
-    const isAdmin = useSelector(state => state.user.isAdmin);
+const Main = props => {
+    const {isAdmin, isLoading, setUserMessage} = props;
+    useEffect(() => setUserMessage(""), [setUserMessage]);
     return (
         <PageWrapper>
-            <HeaderMenu/>
             {
-                isAdmin ?
-                    <ContentContainer
-                        header={<span>Select an option</span>}
-                        body={<OrderList/>}
-                        footer={<MainFooter/>}
-                    />
-                    :
-                    <ContentContainer
-                        header={<span>Select an option</span>}
-                        body={<OrderList/>}
-                    />
+                !isLoading &&
+                    <>
+                        <HeaderMenu/>
+                        {
+                            isAdmin ?
+                                <ContentContainer
+                                    header={<span>Select an option</span>}
+                                    body={<OrderList/>}
+                                    footer={<MainFooter/>}
+                                />
+                                :
+                                <ContentContainer
+                                    header={<span>Select an option</span>}
+                                    body={<OrderList/>}
+                                />
+                        }
+                    </>
             }
         </PageWrapper>
     );
 };
 
-export default Main;
+export default connect(
+    state => ({
+        isAdmin: state.user.isAdmin,
+        isLoading: state.app.isLoading
+    }),
+    {setUserMessage}
+)(Main);

@@ -17,6 +17,7 @@ const SoldierList = props => {
                             key={key}
                             label={soldier.name}
                             onClick={() => setSelectedSoldier(soldier)}
+                            family={soldier.family}
                         />
                 )
             }

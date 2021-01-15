@@ -4,10 +4,12 @@ import axios from "axios";
 import {setUserMessage} from "./user";
 
 export const handleFamilyChange = value => {
-    return dispatch => dispatch({
-        type: types.SET_SELECTED_FAMILY,
-        payload: value
-    })
+    return dispatch => {
+        dispatch({
+            type: types.SET_SELECTED_FAMILY,
+            payload: value
+        })
+    }
 };
 
 export const recruit = (family, soldierId) => {

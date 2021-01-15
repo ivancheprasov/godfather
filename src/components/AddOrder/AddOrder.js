@@ -7,10 +7,12 @@ import {connect} from "react-redux";
 import {formValueSelector} from "redux-form";
 import {addOrder} from "../../actions/orderForm";
 import {useHistory} from "react-router-dom";
+import {useEffect} from "react";
 
 const AddOrder = props => {
-    const {formValues, selectedFamily, addOrder} = props;
+    const {formValues, selectedFamily, isAdmin, addOrder} = props;
     const history = useHistory();
+    useEffect(() => !isAdmin && history.replace("/main"), [isAdmin, history]);
     const submit = () => addOrder(formValues, selectedFamily).then(() => history.replace("/main"));
     return(
         <PageWrapper>
@@ -33,7 +35,8 @@ const selector = formValueSelector('add-order-form')
 export default connect(
     state => ({
         formValues: selector(state, "cost", "income", "lawyers_number", "soldiers_number"),
-        selectedFamily: state.orderForm.selectedFamily
+        selectedFamily: state.orderForm.selectedFamily,
+        isAdmin: state.user.isAdmin
     }),
     {addOrder}
 )(AddOrder);
