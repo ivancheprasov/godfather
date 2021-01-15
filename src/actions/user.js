@@ -7,7 +7,7 @@ export const login = (username, password) => {
         return requestWrapper(
             () =>
                 axios.post("/login", {username, password})
-                    .finally(
+                    .then(
                         response => {
                             dispatch({
                                 type: types.SET_USERNAME,
@@ -26,9 +26,9 @@ export const login = (username, password) => {
                             if (!savedPassword) {
                                 localStorage.setItem("password", password);
                             }
-                            // if(response.status === 200){
+                            if(response.status === 200){
                                 dispatch(isAdmin(true));
-                            // }
+                            }
                         }
                     )
                     .catch(

@@ -53,7 +53,7 @@ class App extends Component {
                         <Redirect to={"/auth"}/>
                 }
                 {
-                    !isLoading && !isAdmin && <Redirect from={"/add"} to={"/main"}/>
+                    !isLoading  && isAuthorized && !isAdmin && <Redirect from={"/add"} to={"/main"}/>
                 }
             </BrowserRouter>
         );
