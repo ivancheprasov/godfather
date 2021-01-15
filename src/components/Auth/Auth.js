@@ -5,6 +5,7 @@ import {login, setUserMessage} from "../../actions/user";
 import {connect} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {useEffect} from "react";
+import SimpleInput from "../common/SimpleInput";
 
 let App = props => {
     const {isMobile, userMessage, setUserMessage, login} = props;
@@ -27,7 +28,7 @@ let App = props => {
                 <Field
                     type={"text"}
                     name={"username"}
-                    component={renderInput}
+                    component={SimpleInput}
                     className={`auth-input ${className}`}
                     placeholder={"Username"}
                     maxLength={150}
@@ -35,7 +36,7 @@ let App = props => {
                 <Field
                     type={"password"}
                     name={"password"}
-                    component={renderInput}
+                    component={SimpleInput}
                     className={`auth-input ${className}`}
                     placeholder={"Password"}
                     maxLength={128}
@@ -48,18 +49,6 @@ let App = props => {
                 </button>
             </form>
         </PageWrapper>
-    );
-};
-
-const renderInput = ({input, type, placeholder, className, meta: {touched, error}}) => {
-    const inputClassName = `${className}${touched && error ? " input-error" : ""}`;
-    return (
-        <input
-            {...input}
-            type={type}
-            placeholder={placeholder}
-            className={inputClassName}
-        />
     );
 };
 

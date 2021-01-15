@@ -1,0 +1,13 @@
+@import "const";
+
+.add-order-form{
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.add-order-input{
+  margin: 10px;
+  background-color: white;
+  font-size: 20px;
+  border: 1px solid $grey;
+}

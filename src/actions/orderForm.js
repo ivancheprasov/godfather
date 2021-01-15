@@ -49,3 +49,19 @@ export const setSelectedOrder = order => {
         payload: order
     });
 };
+
+export const addOrder = (formValues, family) => {
+    const intValues = {};
+    Object.entries(formValues).forEach(([key, value]) =>
+        intValues[key] = parseInt(value.toString()) || 0
+    );
+    return dispatch => {
+        return requestWrapper(
+            () => axios.post("/orders/add", {family, ...intValues})
+                .catch(error => {
+                    dispatch(setUserMessage("Add failed"));
+                    return Promise.reject(error);
+                })
+        );
+    };
+};

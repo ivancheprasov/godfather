@@ -1,0 +1,15 @@
+@import "mixin";
+
+.main-footer{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.add-order-button{
+  @include button;
+  font-size: 20px;
+  margin-left: 5px;
+  height: 55px;
+}

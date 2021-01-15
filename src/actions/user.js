@@ -7,8 +7,8 @@ export const login = (username, password) => {
         return requestWrapper(
             () =>
                 axios.post("/login", {username, password})
-                    .then(
-                        () => {
+                    .finally(
+                        response => {
                             dispatch({
                                 type: types.SET_USERNAME,
                                 payload: username
@@ -26,6 +26,9 @@ export const login = (username, password) => {
                             if (!savedPassword) {
                                 localStorage.setItem("password", password);
                             }
+                            // if(response.status === 200){
+                                dispatch(isAdmin(true));
+                            // }
                         }
                     )
                     .catch(
@@ -62,7 +65,17 @@ export const logout = () => {
             type: types.SET_USERNAME,
             payload: null
         })
+        dispatch(isAdmin(false));
         localStorage.removeItem("username");
         localStorage.removeItem("password");
+    }
+};
+
+export const isAdmin = flag => {
+    return dispatch => {
+        dispatch({
+            type: types.IS_ADMIN,
+            payload: flag
+        })
     }
 }

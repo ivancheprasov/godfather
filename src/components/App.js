@@ -7,6 +7,7 @@ import {initApp, setDeviceType} from "../actions/app";
 import {login, setUserMessage} from "../actions/user";
 import RecruitmentForm from "./Recruitment/RecruitmentForm";
 import SimpleOrderForm from "./SimpleOrder/SimpleOrderForm";
+import AddOrder from "./AddOrder/AddOrder";
 
 class App extends Component {
     componentDidMount() {
@@ -27,7 +28,7 @@ class App extends Component {
     }
 
     render() {
-        const {isLoading, isAuthorized} = this.props;
+        const {isLoading, isAuthorized, isAdmin} = this.props;
         return (
             <BrowserRouter>
                 <Route path={"/auth"}>
@@ -42,11 +43,17 @@ class App extends Component {
                 <Route path={"/orders/:id"}>
                     <SimpleOrderForm/>
                 </Route>
+                <Route path={"/add"}>
+                    <AddOrder/>
+                </Route>
                 {
                     !isLoading && isAuthorized ?
                         <Redirect exact from={"/"} to={"/main"}/>
                         :
                         <Redirect to={"/auth"}/>
+                }
+                {
+                    !isLoading && !isAdmin && <Redirect from={"/add"} to={"/main"}/>
                 }
             </BrowserRouter>
         );
@@ -56,7 +63,8 @@ class App extends Component {
 App = connect(
     state => ({
         isAuthorized: state.user.isAuthorized,
-        isLoading: state.app.isLoading
+        isLoading: state.app.isLoading,
+        isAdmin: state.user.isAdmin
     }),
     {setDeviceType, initApp, login, setUserMessage}
 )(App);
