@@ -3,7 +3,7 @@ import SimpleInput from "../common/SimpleInput";
 import "../../assets/addOrder.scss";
 
 let AddOrderForm = () => {
-    return(
+    return (
         <form
             name={"add-order-form"}
             className={"add-order-form"}

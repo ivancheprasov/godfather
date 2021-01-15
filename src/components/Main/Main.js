@@ -14,22 +14,22 @@ const Main = props => {
         <PageWrapper>
             {
                 !isLoading &&
-                    <>
-                        <HeaderMenu/>
-                        {
-                            isAdmin ?
-                                <ContentContainer
-                                    header={<span>Select an option</span>}
-                                    body={<OrderList/>}
-                                    footer={<MainFooter/>}
-                                />
-                                :
-                                <ContentContainer
-                                    header={<span>Select an option</span>}
-                                    body={<OrderList/>}
-                                />
-                        }
-                    </>
+                <>
+                    <HeaderMenu/>
+                    {
+                        isAdmin ?
+                            <ContentContainer
+                                header={<span>Select an option</span>}
+                                body={<OrderList/>}
+                                footer={<MainFooter/>}
+                            />
+                            :
+                            <ContentContainer
+                                header={<span>Select an option</span>}
+                                body={<OrderList/>}
+                            />
+                    }
+                </>
             }
         </PageWrapper>
     );

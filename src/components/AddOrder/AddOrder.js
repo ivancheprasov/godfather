@@ -14,7 +14,7 @@ const AddOrder = props => {
     const history = useHistory();
     useEffect(() => !isAdmin && history.replace("/main"), [isAdmin, history]);
     const submit = () => addOrder(formValues, selectedFamily).then(() => history.replace("/main"));
-    return(
+    return (
         <PageWrapper>
             <HeaderMenu/>
             <ContentContainer

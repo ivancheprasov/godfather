@@ -1,6 +1,6 @@
 @import "const";
 
-@mixin button{
+@mixin button {
   background-color: $turquoise;
   border-radius: 8px;
   color: white;
@@ -9,7 +9,7 @@
   &:hover {
     background-color: $hoverTurquoise;
   }
-  &:focus{
+  &:focus {
     outline: none;
   }
   cursor: pointer;

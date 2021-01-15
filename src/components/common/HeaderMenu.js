@@ -6,9 +6,9 @@ import {useEffect} from "react";
 const HeaderMenu = props => {
     const {username, userMessage, setUserMessage, logout, isMobile} = props;
     useEffect(() => setUserMessage(""), [setUserMessage]);
-    return(
+    return (
         <div className={"header-menu"}>
-            <span className={`header-message ${!isMobile ? "desktop-header-message": ""}`}>{userMessage}</span>
+            <span className={`header-message ${!isMobile ? "desktop-header-message" : ""}`}>{userMessage}</span>
             <div>
                 <span className={"username"}>{username}</span>
                 <button

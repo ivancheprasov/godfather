@@ -12,7 +12,7 @@ const SimpleOrderForm = props => {
     const {selectedFamily, selectedOrder, giveOrder} = props;
     const history = useHistory();
     useEffect(() => !selectedOrder && history.replace("/main"), [selectedOrder, history]);
-    return(
+    return (
         <PageWrapper>
             <HeaderMenu/>
             <ContentContainer

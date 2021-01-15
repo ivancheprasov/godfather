@@ -1,39 +1,41 @@
 @import "mixin";
 
-.auth-header-wrapper{
+.auth-header-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 10%;
-  &.mobile{
+
+  &.mobile {
     margin-top: 40%;
   }
 }
 
-.auth-header{
+.auth-header {
   font-size: 30px;
 }
 
-.user-message-wrapper{
+.user-message-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 2%;
-  &.mobile{
+
+  &.mobile {
     margin-top: 7.5%;
   }
 }
 
-.user-message{
+.user-message {
   font-size: 22px;
   color: red;
 }
 
-.authorization-form{
+.authorization-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.auth-input{
+.auth-input {
   width: 30%;
   display: inline-block;
   text-decoration: none;
@@ -42,33 +44,38 @@
   border-bottom: 1px solid $violet;
   font-size: 20px;
   margin: 1% auto 0;
+
   &:hover {
     background-color: $grey;
   }
-  &:focus{
+
+  &:focus {
     outline: none;
   }
-  &.mobile{
+
+  &.mobile {
     margin-top: 10%;
     width: 85%;
   }
 }
 
-.input-error{
+.input-error {
   background-color: $error;
   border-bottom: 1px solid red;
-  &:hover{
+
+  &:hover {
     background-color: $hoverError;
   }
 }
 
-.auth-button{
+.auth-button {
   @include button;
   padding: 15px;
   width: 20%;
   margin: 4% auto;
   font-size: 20px;
-  &.mobile{
+
+  &.mobile {
     margin-top: 20%;
     width: 60%;
   }

@@ -9,25 +9,25 @@ import {useEffect} from "react";
 const ListFooter = props => {
     const {selectedFamily, handleFamilyChange, loadFamilyBudget, onSubmit, disabled} = props;
     useEffect(() => loadFamilyBudget(selectedFamily || families.Corleone), [loadFamilyBudget, selectedFamily]);
-    return(
-      <div className={"list-footer"}>
-          <RadioGroup
-              name="family"
-              value={selectedFamily}
-              defaultValue={families.Corleone}
-              onChange={event => handleFamilyChange(event.target.value)}
-          >
-              <FormControlLabel value={families.Corleone} control={<Radio/>} label={"Corleone"}/>
-              <FormControlLabel value={families.Tattalgia} control={<Radio/>} label={"Tattaglia"}/>
-          </RadioGroup>
-          <button
-              className={"list-submit-button"}
-              onClick={onSubmit}
-              disabled={disabled}
-          >
-              Send
-          </button>
-      </div>
+    return (
+        <div className={"list-footer"}>
+            <RadioGroup
+                name="family"
+                value={selectedFamily}
+                defaultValue={families.Corleone}
+                onChange={event => handleFamilyChange(event.target.value)}
+            >
+                <FormControlLabel value={families.Corleone} control={<Radio/>} label={"Corleone"}/>
+                <FormControlLabel value={families.Tattalgia} control={<Radio/>} label={"Tattaglia"}/>
+            </RadioGroup>
+            <button
+                className={"list-submit-button"}
+                onClick={onSubmit}
+                disabled={disabled}
+            >
+                Send
+            </button>
+        </div>
     );
 };
 

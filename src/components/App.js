@@ -17,11 +17,11 @@ class App extends Component {
         if (username && password) {
             this.props.login(username, password)
                 .finally(
-                () => {
-                    this.props.setUserMessage("");
-                    this.props.initApp();
-                }
-            );
+                    () => {
+                        this.props.setUserMessage("");
+                        this.props.initApp();
+                    }
+                );
         } else {
             this.props.initApp();
         }
@@ -31,14 +31,17 @@ class App extends Component {
         const {isLoading, isAuthorized} = this.props;
         return (
             <BrowserRouter>
-                <Route exact path={["/auth","/"]}>
+                <Route exact path={["/auth", "/"]}>
                     <Auth/>
                 </Route>
                 {
-                    !isLoading && (
+                    !isLoading
+                    &&
+                    (
                         !isAuthorized
-                        ? <Redirect to={"/auth"}/>
-                        :
+                            ?
+                            <Redirect to={"/auth"}/>
+                            :
                             <>
                                 <Route path={"/main"}>
                                     <Main/>

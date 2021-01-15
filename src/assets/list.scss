@@ -1,62 +1,68 @@
 @import "mixin";
 
-.list{
+.list {
   height: 100%;
   overflow-y: scroll;
-  &::-webkit-scrollbar{
+
+  &::-webkit-scrollbar {
     -webkit-appearance: none;
   }
 }
 
 .list-item {
-  &:hover{
+  &:hover {
     background-color: $lightGrey;
   }
+
   width: calc(100% - 67px);
   display: inline-block;
   padding: 20px;
   border-bottom: 2px solid $lightGrey;
   cursor: pointer;
+
   div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 30px;
   }
 }
 
-.list-footer{
+.list-footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  .MuiFormGroup-root{
+
+  .MuiFormGroup-root {
     flex-wrap: nowrap;
   }
+
   .MuiIconButton-colorSecondary {
     color: $turquoise !important;
   }
 }
 
-.list-submit-button{
+.list-submit-button {
   @include button;
   font-size: 20px;
   padding: 0 30px;
   height: 70px;
 }
 
-.list-info{
+.list-info {
   display: flex;
   flex-direction: row;
   margin-bottom: 10px;
 }
 
-.list-info-property{
+.list-info-property {
   display: flex;
   width: 100px;
   font-weight: bold;
   margin: 0 30px;
 }
 
-.list-item-error-icon{
+.list-item-error-icon {
   color: red;
 }

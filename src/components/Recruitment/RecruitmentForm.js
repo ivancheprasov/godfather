@@ -13,9 +13,9 @@ const RecruitmentForm = props => {
     const {selectedFamily, selectedSoldier, recruit, setSelectedSoldier} = props;
     useEffect(() => {
         setSelectedSoldier(null)
-    },[setSelectedSoldier]);
+    }, [setSelectedSoldier]);
     const history = useHistory();
-    return(
+    return (
         <PageWrapper>
             <HeaderMenu/>
             <ContentContainer

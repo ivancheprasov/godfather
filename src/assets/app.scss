@@ -7,19 +7,22 @@ body {
 
 .progress-bar {
   margin: 0 12px;
-  &.MuiLinearProgress-colorPrimary{
+
+  &.MuiLinearProgress-colorPrimary {
     background-color: $turquoise;
-    .MuiLinearProgress-barColorPrimary{
+
+    .MuiLinearProgress-barColorPrimary {
       background-color: $hoverTurquoise;
     }
   }
 }
 
-.header-menu{
+.header-menu {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 8px 12px;
+
   div {
     display: flex;
     justify-content: flex-end;
@@ -27,7 +30,7 @@ body {
   }
 }
 
-.sign-out-button{
+.sign-out-button {
   @include button;
   padding: 0 15px;
   font-size: 20px;
@@ -35,7 +38,7 @@ body {
   height: 55px;
 }
 
-.username{
+.username {
   font-size: 20px;
   margin-right: 5px;
 }
@@ -45,35 +48,42 @@ body {
   border: 2px solid $grey;
   border-radius: 8px;
   padding: 20px;
-  &.desktop{
+
+  &.desktop {
     margin: 20px auto;
     width: 30%;
     height: 700px;
   }
+
   &.mobile {
     margin: 20px 12px 12px;
     height: calc(80vh - 10px);
     width: auto;
   }
-  &-header{
+
+  &-header {
     border-bottom: 2px solid $grey;
     display: flex;
     justify-content: center;
     text-align: center;
     padding-bottom: 20px;
     height: calc(10% - 24px);
+
     span {
       display: flex;
       justify-content: center;
       align-items: center;
     }
   }
-  &-body{
+
+  &-body {
     overflow-y: scroll;
-    &::-webkit-scrollbar{
+
+    &::-webkit-scrollbar {
       -webkit-appearance: none;
     }
   }
+
   &-footer {
     height: calc(20% - 24px);
     padding-top: 20px;
@@ -84,7 +94,7 @@ body {
   }
 }
 
-.subheader{
+.subheader {
   display: flex;
   justify-content: center;
   align-items: center;
